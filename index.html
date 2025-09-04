@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liga E-Football RND Jaya</title>
+    <style>
+        :root {
+            /* Modern Color Palette */
+            --primary-600: #4F46E5;
+            --primary-500: #6366F1;
+            --primary-400: #818CF8;
+            --primary-300: #A5B4FC;
+            --primary-200: #C7D2FE;
+            --primary-100: #E0E7FF;
+            --primary-50: #EEF2FF;
+            --primary-700: #3730A3;
+            --primary-800: #312E81;
+            --secondary-600: #7C3AED;
+            --secondary-500: #8B5CF6;
+            --secondary-400: #A78BFA;
+            --secondary-300: #C4B5FD;
+            --secondary-200: #DDD6FE;
+            --secondary-100: #EDE9FE;
+            --secondary-50: #F5F3FF;
+            --secondary-700: #6D28D9;
+            --gray-900: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-500: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-300: #D1D5DB;
+            --gray-200: #E5E7EB;
+            --gray-100: #F3F4F6;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+            --success-600: #059669;
+            --success-500: #10B981;
+            --success-100: #D1FAE5;
+            --error-600: #DC2626;
+            --error-500: #EF4444;
+            --error-100: #FEE2E2;
+            --warning-600: #D97706;
+            --warning-500: #F59E0B;
+            --warning-100: #FEF3C7;
+            
+            /* Spacing & Typography */
+            --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+            --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+            --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+            --space-16: 4rem; --space-20: 5rem;
+            
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Apple Color Emoji', 'Twemoji Mozilla', Roboto, sans-serif;
+            --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+            --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem; --text-4xl: 2.25rem;
+            
+            /* Shadows & Radius */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            
+            --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.75rem;
+            --radius-xl: 1rem; --radius-2xl: 1.5rem; --radius-full: 9999px;
+            
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--secondary-600) 100%);
+            min-height: 100vh;
+            color: var(--gray-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: var(--space-4);
+        }
+
+        .header {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            margin-bottom: var(--space-6);
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+        }
+
+        .header h1 {
+            color: var(--primary-600);
+            font-size: var(--text-4xl);
+            font-weight: 800;
+            margin-bottom: var(--space-2);
+            letter-spacing: -0.025em;
+        }
+
+        .header p {
+            color: var(--gray-600);
+            font-size: var(--text-lg);
+            font-weight: 500;
+        }
+
+        .nav-tabs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-6);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+        }
+
+        .nav-tab {
+            padding: var(--space-4) var(--space-6);
+            text-align: center;
+            cursor: pointer;
+            background: var(--white);
+            border: none;
+            font-size: var(--text-base);
+            font-weight: 600;
+            color: var(--primary-700);
+            transition: all var(--transition-normal);
+            position: relative;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid var(--gray-200);
+            font-family: var(--font-sans);
+        }
+
+        .nav-tab:last-child { border-right: none; }
+
+        .nav-tab::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+            transform: scaleX(0);
+            transition: transform var(--transition-normal);
+        }
+
+        .nav-tab.active::before { transform: scaleX(1); }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, var(--primary-50), var(--secondary-50));
+            color: var(--primary-700);
+        }
+
+        .nav-tab:hover {
+            background: var(--gray-50);
+            color: var(--gray-800);
+            transform: translateY(-1px);
+        }
+
+        .nav-tab.active:hover {
+            background: linear-gradient(135deg, var(--primary-100), var(--secondary-100));
+            color: var(--primary-700);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            margin-bottom: var(--space-6);
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-normal);
+            border: 1px solid var(--gray-100);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-400), var(--secondary-400));
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .card h2 {
+            color: var(--primary-600);
+            margin-bottom: var(--space-6);
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: var(--space-4);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: var(--radius-lg);
+        }
+
+        th, td {
+            padding: var(--space-4);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: var(--white);
+            font-weight: 600;
+            font-size: var(--text-sm);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        th:first-child { border-top-left-radius: var(--radius-lg); }
+        th:last-child { border-top-right-radius: var(--radius-lg); }
+
+        tr:hover td { background-color: var(--gray-50); }
+        tr:last-child td { border-bottom: none; }
+
+        .form-group {
+            margin-bottom: var(--space-6);
+        }
+
+        label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: 600;
+            color: var(--gray-700);
+            font-size: var(--text-sm);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: var(--space-4);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-base);
+            transition: all var(--transition-normal);
+            font-family: inherit;
+            min-height: 48px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: var(--white);
+            border: none;
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            min-height: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left var(--transition-normal);
+        }
+
+        button:hover::before { left: 100%; }
+        button:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        button:active { transform: translateY(0); }
+
+        .match-card {
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            margin-bottom: var(--space-4);
+            transition: all var(--transition-normal);
+            background: var(--white);
+        }
+
+        .match-card:hover {
+            border-color: var(--primary-400);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-4);
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+
+        .teams {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .match-time {
+            color: var(--gray-500);
+            font-size: var(--text-sm);
+            font-weight: 500;
+        }
+
+        .admin-section {
+            background: linear-gradient(135deg, var(--warning-100), var(--warning-50));
+            border: 2px solid var(--warning-300);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            margin-bottom: var(--space-6);
+        }
+
+        .admin-section h3 {
+            color: var(--warning-700);
+            margin-bottom: var(--space-4);
+        }
+
+        .pending-result {
+            background: var(--gray-50);
+            border-left: 4px solid var(--warning-500);
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+            border-radius: var(--radius-md);
+        }
+
+        .result-actions {
+            display: flex;
+            gap: var(--space-3);
+            margin-top: var(--space-3);
+            flex-wrap: wrap;
+        }
+
+        .btn-approve {
+            background: linear-gradient(135deg, var(--success-600), var(--success-500));
+        }
+
+        .btn-reject {
+            background: linear-gradient(135deg, var(--error-600), var(--error-500));
+        }
+
+        .standings-position {
+            font-weight: bold;
+            color: var(--primary-600);
+            background: var(--primary-50);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+        }
+
+        .alert {
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-5);
+            border: 1px solid transparent;
+        }
+
+        .alert-success {
+            background: var(--success-100);
+            border-color: var(--success-300);
+            color: var(--success-700);
+        }
+
+        .alert-warning {
+            background: var(--warning-100);
+            border-color: var(--warning-300);
+            color: var(--warning-700);
+        }
+
+        /* Grid Systems */
+        .grid {
+            display: grid;
+            gap: var(--space-4);
+        }
+
+        .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+        /* Mobile-First Responsive Design */
+        @media (max-width: 480px) {
+            .container { padding: var(--space-2); }
+            .header { padding: var(--space-6); }
+            .header h1 { font-size: var(--text-3xl); }
+            .nav-tabs { grid-template-columns: 1fr; }
+            .nav-tab { min-height: 52px; }
+            .card { padding: var(--space-6); }
+            .match-header { flex-direction: column; align-items: flex-start; }
+            .result-actions { flex-direction: column; }
+            table { font-size: var(--text-sm); min-width: 600px; }
+            th, td { padding: var(--space-2) var(--space-3); white-space: nowrap; }
+            .grid-cols-2,
+            .grid-cols-3,
+            .grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Mobile matchday navigation */
+            .matchday-navigation {
+                padding: var(--space-4);
+                margin-bottom: var(--space-6);
+                flex-direction: column;
+                gap: var(--space-4);
+            }
+            
+            .matchday-info {
+                order: -1;
+                margin-bottom: var(--space-3);
+                min-width: auto;
+            }
+            
+            .matchday-info h3 {
+                font-size: var(--text-lg);
+            }
+            
+            .nav-btn {
+                min-width: 120px;
+                padding: var(--space-3) var(--space-5);
+                font-size: var(--text-xs);
+                min-height: 40px;
+            }
+            
+            .nav-buttons-container {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                gap: var(--space-3);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 769px) {
+            .nav-tabs { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* Focus indicators for accessibility */
+        .nav-tab:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 2px solid var(--primary-500);
+            outline-offset: 2px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: var(--white);
+            margin: 5% auto;
+            border-radius: var(--radius-2xl);
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--shadow-2xl);
+            overflow: hidden;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: var(--white);
+            padding: var(--space-6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: var(--text-xl);
+            font-weight: 700;
+        }
+
+        .modal-body {
+            padding: var(--space-8);
+        }
+
+        .modal-footer {
+            padding: var(--space-6);
+            background: var(--gray-50);
+            display: flex;
+            gap: var(--space-3);
+            justify-content: flex-end;
+        }
+
+        .close {
+            color: var(--white);
+            font-size: var(--text-2xl);
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: var(--space-2);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-normal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+        }
+
+        .close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--gray-700);
+            border: 2px solid var(--gray-300);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-100);
+            border-color: var(--gray-400);
+        }
+
+        /* Mobile Modal Adaptations */
+        @media (max-width: 480px) {
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+            
+            .modal-header {
+                padding: var(--space-4);
+            }
+            
+            .modal-body {
+                padding: var(--space-6);
+            }
+            
+            .modal-footer {
+                padding: var(--space-4);
+                flex-direction: column;
+            }
+            
+            .modal-footer .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .matchday-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-8);
+            padding: var(--space-6);
+            background: linear-gradient(135deg, var(--primary-50), var(--secondary-50));
+            border-radius: var(--radius-2xl);
+            border: 2px solid var(--primary-200);
+            flex-wrap: wrap;
+            gap: var(--space-3);
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: var(--white);
+            border: none;
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            min-width: 100px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+
+        .nav-btn:disabled {
+            background: var(--gray-400);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .matchday-info {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .matchday-info h3 {
+            color: var(--primary-600);
+            margin: 0;
+            font-size: var(--text-xl);
+            font-weight: 700;
+        }
+
+        .matchday-info p {
+            color: var(--gray-600);
+            margin: 0;
+            font-size: var(--text-sm);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚽ Liga E-Football RND Jaya</h1>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="switchTab('klasemen')">🏆 Klasemen</button>
+            <button class="nav-tab" onclick="switchTab('jadwal')">📅 Jadwal</button>
+            <button class="nav-tab" onclick="switchTab('input-hasil')">⚽ Input Hasil</button>
+            <button class="nav-tab" onclick="switchTab('admin')">👨‍💼 Admin</button>
+        </div>
+
+        <!-- Klasemen Tab -->
+        <div id="klasemen" class="tab-content active">
+            <div class="card">
+                <h2>🏆 Klasemen Liga</h2>
+                <div class="table-container">
+                    <table id="standings-table">
+                        <thead>
+                            <tr>
+                                <th>Pos</th>
+                                <th>Tim</th>
+                                <th>Main</th>
+                                <th>Menang</th>
+                                <th>Seri</th>
+                                <th>Kalah</th>
+                                <th>GM</th>
+                                <th>GK</th>
+                                <th>SG</th>
+                                <th>Poin</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standings-body">
+                            <!-- Data akan diisi oleh JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jadwal Tab -->
+        <div id="jadwal" class="tab-content">
+            <div class="card">
+                <h2>📅 Jadwal Pertandingan</h2>
+                
+                <!-- Matchday Navigation -->
+                <div class="matchday-navigation">
+                    <div class="matchday-info">
+                        <h3 id="current-matchday-title">Matchday 1</h3>
+                        <p id="matchday-counter">1 / 1</p>
+                    </div>
+                    <div class="nav-buttons-container">
+                        <button class="nav-btn" id="prev-btn" onclick="changeMatchday(-1)">
+                            ← Sebelumnya
+                        </button>
+                        <button class="nav-btn" id="next-btn" onclick="changeMatchday(1)">
+                            Selanjutnya →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Matchday Content Slider -->
+                <div class="matchday-slider">
+                    <div class="matchday-container" id="matchday-container">
+                        <!-- Matchday slides akan diisi oleh JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Matchday Indicators -->
+                <div class="matchday-indicators" id="matchday-indicators">
+                    <!-- Indicator dots akan diisi oleh JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Hasil Tab -->
+        <div id="input-hasil" class="tab-content">
+            <div class="card">
+                <h2>⚽ Input Hasil Pertandingan</h2>
+                <form id="result-form">
+                    <div class="form-group">
+                        <label for="match-select">Pilih Pertandingan:</label>
+                        <select id="match-select" required>
+                            <option value="">Pilih pertandingan...</option>
+                            <!-- Options akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="home-score">Skor Tim Kandang:</label>
+                        <input type="number" id="home-score" min="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="away-score">Skor Tim Tandang:</label>
+                        <input type="number" id="away-score" min="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="screenshot">Upload Screenshot Bukti:</label>
+                        <div class="file-upload" onclick="document.getElementById('screenshot').click()">
+                            <p>📸 Klik untuk upload screenshot</p>
+                            <p style="font-size: 12px; color: #666;">Format: JPG, JPEG, PNG, GIF, BMP, WEBP, TIFF, SVG, ICO, HEIC, HEIF, AVIF - Maksimal 30MB</p>
+                        </div>
+                        <input type="file" id="screenshot" accept="image/*,.jpg,.jpeg,.png,.gif,.bmp,.webp,.tiff,.tif,.svg,.ico,.heic,.heif,.avif" style="display: none;" required>
+                        <div id="file-preview"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Catatan (Opsional):</label>
+                        <textarea id="notes" rows="3" placeholder="Tambahkan catatan tentang pertandingan..."></textarea>
+                    </div>
+
+                    <button type="submit">📤 Kirim Hasil</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Tab -->
+        <div id="admin" class="tab-content">
+            <div class="card">
+                <h2>📋 Hasil Menunggu Approval</h2>
+                <div id="pending-results">
+                    <!-- Hasil yang pending akan diisi oleh JavaScript -->
+                </div>
+            </div>
+
+
+
+            <div class="card">
+                <h2>📋 Daftar User</h2>
+                <div id="users-list">
+                    <!-- User list akan diisi oleh JavaScript -->
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>➕ Tambah User Baru</h2>
+                <div class="grid grid-cols-2" style="margin-bottom: var(--space-4);">
+                    <div class="form-group">
+                        <label for="new-username">Username:</label>
+                        <input type="text" id="new-username" placeholder="Username...">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">Password:</label>
+                        <input type="password" id="new-password" placeholder="Password...">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2" style="margin-bottom: var(--space-4);">
+                    <div class="form-group">
+                        <label for="new-user-team">Nama Tim:</label>
+                        <input type="text" id="new-user-team" placeholder="Nama tim user...">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-user-role">Role:</label>
+                        <select id="new-user-role">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="addUser()" class="btn">
+                    <span>👤</span>
+                    <span>Tambah User</span>
+                </button>
+            </div>
+
+            <div class="card">
+                <h2>⚙️ Pengaturan Sistem</h2>
+                <div class="form-group">
+                    <h3>🔑 Token Registrasi</h3>
+                    <div class="alert" style="background: #e3f2fd; border: 1px solid #2196f3; color: #1976d2; margin-bottom: 20px;">
+                        <strong>ℹ️ Info:</strong> Token ini diperlukan untuk pendaftaran akun baru. Hanya pengguna dengan token valid yang dapat mendaftar.
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label for="registration-token">Token Registrasi:</label>
+                            <input type="text" id="registration-token" placeholder="Masukkan token registrasi...">
+                        </div>
+                        <div>
+                            <label for="allow-registration">Status Pendaftaran:</label>
+                            <select id="allow-registration">
+                                <option value="true">Terbuka</option>
+                                <option value="false">Ditutup</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="saveRegistrationSettings()" style="background: linear-gradient(45deg, #4caf50, #45a049); margin-bottom: 20px;">
+                        💾 Simpan Pengaturan Registrasi
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>⚙️ Kelola Pertandingan</h2>
+
+                <div class="form-group" style="margin-top: 30px;">
+                    <h3>🗓️ Generator Jadwal Liga</h3>
+                    <div class="alert" style="background: #e3f2fd; border: 1px solid #2196f3; color: #1976d2; margin-bottom: 20px;">
+                        <strong>ℹ️ Info:</strong> Sistem akan membuat jadwal lengkap semua tim bertemu 2x (kandang & tandang)
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label for="season-start">Tanggal Mulai Liga:</label>
+                            <input type="date" id="season-start">
+                        </div>
+                        <div>
+                            <label for="matches-per-day">Pertandingan per Matchday:</label>
+                            <select id="matches-per-day">
+                                <option value="1">1 Pertandingan</option>
+                                <option value="2" selected>2 Pertandingan</option>
+                                <option value="3">3 Pertandingan</option>
+                                <option value="4">4 Pertandingan</option>
+                                <option value="6">6 Pertandingan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label for="matchday-interval">Interval Matchday (hari):</label>
+                            <select id="matchday-interval">
+                                <option value="3">3 Hari</option>
+                                <option value="7" selected>7 Hari (Mingguan)</option>
+                                <option value="14">14 Hari</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="match-time-auto">Waktu Pertandingan:</label>
+                            <input type="time" id="match-time-auto" value="20:00">
+                        </div>
+                    </div>
+
+                    <button onclick="generateFullSchedule()" style="background: linear-gradient(45deg, #4caf50, #45a049); margin-bottom: 20px;">
+                        🎯 Generate Jadwal Liga Lengkap
+                    </button>
+                    <button onclick="clearAllMatches()" style="background: linear-gradient(45deg, #f44336, #d32f2f);">
+                        🗑️ Hapus Semua Jadwal
+                    </button>
+                </div>
+
+                <div class="form-group" style="margin-top: 30px;">
+                    <h3>📅 Buat Pertandingan Manual</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                        <div>
+                            <label for="home-team-select">Tim Kandang:</label>
+                            <select id="home-team-select">
+                                <!-- Options akan diisi oleh JavaScript -->
+                            </select>
+                        </div>
+                        <div>
+                            <label for="away-team-select">Tim Tandang:</label>
+                            <select id="away-team-select">
+                                <!-- Options akan diisi oleh JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                        <div>
+                            <label for="match-date">Tanggal:</label>
+                            <input type="date" id="match-date">
+                        </div>
+                        <div>
+                            <label for="match-time">Waktu:</label>
+                            <input type="time" id="match-time">
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <label for="matchday-number">Matchday:</label>
+                        <input type="number" id="matchday-number" min="1" value="1">
+                    </div>
+                    <button onclick="createMatch()" style="margin-top: 15px;">📅 Buat Pertandingan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Edit User Modal -->
+    <div id="editUserModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✏️ Edit User</h2>
+                <span class="close" onclick="closeEditUserModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="edit-username">Username:</label>
+                    <input type="text" id="edit-username" placeholder="Username...">
+                </div>
+                <div class="form-group">
+                    <label for="edit-user-password">Password Baru (kosongkan jika tidak diubah):</label>
+                    <input type="password" id="edit-user-password" placeholder="Password baru...">
+                </div>
+                <div class="form-group">
+                    <label for="edit-user-team">Nama Tim:</label>
+                    <input type="text" id="edit-user-team" placeholder="Nama tim...">
+                </div>
+                <div class="form-group">
+                    <label for="edit-user-role">Role:</label>
+                    <select id="edit-user-role">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="saveUserEdit()" class="btn btn-primary">
+                    <span>✅</span>
+                    <span>Simpan</span>
+                </button>
+                <button onclick="closeEditUserModal()" class="btn btn-secondary">
+                    <span>❌</span>
+                    <span>Batal</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Check authentication on page load
+        window.addEventListener('load', () => {
+            checkAuthentication();
+        });
+
+        function checkAuthentication() {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const user = JSON.parse(currentUser);
+            
+            // Check if user is admin
+            if (user.role !== 'admin' && user.username !== 'admin') {
+                // Redirect non-admin users to their dashboard
+                window.location.href = 'my-team.html';
+                return;
+            }
+
+            // Show admin info in header
+            updateAdminHeader(user);
+        }
+
+        function updateAdminHeader(user) {
+            const header = document.querySelector('.header');
+            if (header) {
+                const adminInfo = document.createElement('div');
+                adminInfo.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-6); padding-top: var(--space-6); border-top: 2px solid var(--gray-200); flex-wrap: wrap; gap: var(--space-4);">
+                        <div style="color: var(--gray-600); font-size: var(--text-lg); font-weight: 500;">
+                            Selamat datang, Admin <strong style="color: var(--primary-600);">${user.username}</strong>!
+                        </div>
+                        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+                            <a href="my-team.html" style="background: var(--white); color: var(--primary-600); border: 2px solid var(--primary-600); padding: var(--space-3) var(--space-5); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600; transition: all var(--transition-normal); display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px;" onmouseover="this.style.background='var(--primary-600)'; this.style.color='var(--white)';" onmouseout="this.style.background='var(--white)'; this.style.color='var(--primary-600)';">👥 Tim Saya</a>
+                            <button onclick="logout()" style="background: linear-gradient(135deg, var(--error-600), var(--error-500)); color: var(--white); border: none; padding: var(--space-3) var(--space-5); border-radius: var(--radius-lg); font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; transition: all var(--transition-normal);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-lg)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">🚪 Logout</button>
+                        </div>
+                    </div>
+                `;
+                header.appendChild(adminInfo);
+            }
+        }
+
+        function logout() {
+            if (confirm('Yakin ingin logout?')) {
+                localStorage.removeItem('currentUser');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>

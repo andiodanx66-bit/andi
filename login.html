@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Liga E-Football RND Jaya</title>
+    <style>
+        :root {
+            /* Modern Color Palette */
+            --primary-600: #4F46E5;
+            --primary-500: #6366F1;
+            --primary-400: #818CF8;
+            --primary-50: #EEF2FF;
+            --secondary-600: #7C3AED;
+            --secondary-500: #8B5CF6;
+            --gray-900: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-500: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-300: #D1D5DB;
+            --gray-200: #E5E7EB;
+            --gray-100: #F3F4F6;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+            --success-600: #059669;
+            --success-500: #10B981;
+            --success-100: #D1FAE5;
+            --error-600: #DC2626;
+            --error-500: #EF4444;
+            --error-100: #FEE2E2;
+            --warning-600: #D97706;
+            --warning-500: #F59E0B;
+            --warning-100: #FEF3C7;
+            
+            /* Spacing System */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            
+            /* Typography */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --gray-900: #F9FAFB;
+                --gray-800: #F3F4F6;
+                --gray-700: #E5E7EB;
+                --gray-600: #D1D5DB;
+                --gray-500: #9CA3AF;
+                --gray-400: #6B7280;
+                --gray-300: #4B5563;
+                --gray-200: #374151;
+                --gray-100: #1F2937;
+                --gray-50: #111827;
+                --white: #1F2937;
+            }
+
+            body {
+                background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+            }
+
+            .login-container {
+                background: var(--gray-100);
+                border: 1px solid var(--gray-200);
+            }
+
+            input {
+                background: var(--gray-50);
+                border-color: var(--gray-300);
+                color: var(--gray-800);
+            }
+
+            input:focus {
+                background: var(--gray-100);
+            }
+
+            .type-btn {
+                background: var(--gray-100);
+                border-color: var(--gray-300);
+                color: var(--gray-700);
+            }
+
+            .type-btn:hover {
+                background: var(--gray-200);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--secondary-600) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-900);
+            padding: var(--space-4);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .login-container {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-10);
+            width: 100%;
+            max-width: 28rem;
+            box-shadow: var(--shadow-2xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+        }
+
+        .login-header {
+            margin-bottom: var(--space-8);
+        }
+
+        .login-header h1 {
+            color: var(--primary-600);
+            font-size: var(--text-3xl);
+            font-weight: 800;
+            margin-bottom: var(--space-3);
+            letter-spacing: -0.025em;
+        }
+
+        .login-header p {
+            color: var(--gray-600);
+            font-size: var(--text-base);
+            font-weight: 500;
+        }
+
+        .login-form {
+            margin-bottom: var(--space-8);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-6);
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: 600;
+            color: var(--gray-700);
+            font-size: var(--text-sm);
+            letter-spacing: 0.025em;
+        }
+
+        input {
+            width: 100%;
+            padding: var(--space-4);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-base);
+            transition: all var(--transition-normal);
+            background: var(--white);
+            font-family: inherit;
+            min-height: 48px; /* Touch-friendly */
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            background: var(--white);
+        }
+
+        input:hover {
+            border-color: var(--gray-400);
+        }
+
+        .login-type {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3);
+            margin-bottom: var(--space-6);
+        }
+
+        .type-btn {
+            padding: var(--space-4);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-lg);
+            background: var(--white);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-weight: 600;
+            font-size: var(--text-sm);
+            min-height: 48px; /* Touch-friendly */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .type-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left var(--transition-normal);
+        }
+
+        .type-btn:hover::before {
+            left: 100%;
+        }
+
+        .type-btn:hover {
+            border-color: var(--primary-500);
+            background: var(--primary-50);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .type-btn.active {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: var(--white);
+            border-color: transparent;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .type-btn.active:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: var(--white);
+            border: none;
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-lg);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            margin-bottom: var(--space-5);
+            min-height: 52px; /* Touch-friendly */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left var(--transition-normal);
+        }
+
+        .login-btn:hover::before {
+            left: 100%;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .register-section {
+            border-top: 1px solid var(--gray-200);
+            padding-top: var(--space-5);
+            margin-top: var(--space-5);
+        }
+
+        .guest-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-top: var(--space-4);
+            color: var(--primary-600);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: var(--text-sm);
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-normal);
+            border: 2px solid transparent;
+        }
+
+        .guest-link:hover {
+            background: var(--primary-50);
+            border-color: var(--primary-200);
+            transform: translateY(-1px);
+        }
+
+        .alert {
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-5);
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid transparent;
+        }
+
+        .alert-error {
+            background: var(--error-100);
+            border-color: rgba(220, 38, 38, 0.2);
+            color: var(--error-600);
+        }
+
+        .alert-success {
+            background: var(--success-100);
+            border-color: rgba(5, 150, 105, 0.2);
+            color: var(--success-600);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Mobile-First Responsive Design */
+        @media (max-width: 480px) {
+            body {
+                padding: var(--space-2);
+            }
+            
+            .login-container {
+                padding: var(--space-6);
+                margin: var(--space-2);
+            }
+            
+            .login-header h1 {
+                font-size: var(--text-2xl);
+            }
+            
+            .login-type {
+                grid-template-columns: 1fr;
+                gap: var(--space-2);
+            }
+            
+            input, .type-btn, .login-btn {
+                min-height: 52px; /* Larger touch targets on mobile */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                max-width: 24rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .login-container {
+                max-width: 28rem;
+            }
+        }
+
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus indicators for accessibility */
+        .type-btn:focus-visible,
+        .login-btn:focus-visible,
+        .guest-link:focus-visible {
+            outline: 2px solid var(--primary-500);
+            outline-offset: 2px;
+        }
+
+        /* Loading states */
+        .loading {
+            position: relative;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid var(--white);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>⚽ E-Football</h1>
+            <p>Liga Management System</p>
+        </div>
+
+        <div id="alert-container"></div>
+
+        <!-- Login Form -->
+        <div id="login-section">
+            <form class="login-form" onsubmit="handleLogin(event)">
+                <div class="login-type">
+                    <button type="button" class="type-btn active" onclick="selectLoginType('existing')">
+                        <span>👤 Login</span>
+                    </button>
+                    <button type="button" class="type-btn" onclick="selectLoginType('register')">
+                        <span>➕ Daftar</span>
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required autocomplete="current-password">
+                </div>
+
+                <div id="register-fields" class="hidden">
+                    <div class="form-group">
+                        <label for="team-name">Nama Tim:</label>
+                        <input type="text" id="team-name" placeholder="Masukkan nama tim Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp-number">Nomor WhatsApp:</label>
+                        <input type="text" id="whatsapp-number" placeholder="Masukkan nomor WhatsApp Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="registration-token">Token Registrasi:</label>
+                        <input type="text" id="registration-token" placeholder="Masukkan token registrasi">
+                    </div>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <span id="login-btn-text">🚀 Masuk</span>
+                </button>
+            </form>
+
+            <div class="register-section">
+                <p style="margin-bottom: var(--space-4); color: var(--gray-600); font-size: var(--text-sm);">Atau masuk sebagai:</p>
+                <a href="public.html?guest=true" class="guest-link">
+                    <span>👁️</span>
+                    <span>Lihat sebagai Guest</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isRegisterMode = false;
+
+        function selectLoginType(type) {
+            const buttons = document.querySelectorAll('.type-btn');
+            const registerFields = document.getElementById('register-fields');
+            const loginBtnText = document.getElementById('login-btn-text');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            if (type === 'register') {
+                buttons[1].classList.add('active');
+                registerFields.classList.remove('hidden');
+                loginBtnText.innerHTML = '<span>📝 Daftar</span>';
+                isRegisterMode = true;
+                document.getElementById('team-name').required = true;
+                document.getElementById('whatsapp-number').required = true;
+                document.getElementById('registration-token').required = true;
+            } else {
+                buttons[0].classList.add('active');
+                registerFields.classList.add('hidden');
+                loginBtnText.innerHTML = '<span>🚀 Masuk</span>';
+                isRegisterMode = false;
+                document.getElementById('team-name').required = false;
+                document.getElementById('whatsapp-number').required = false;
+                document.getElementById('registration-token').required = false;
+            }
+        }
+
+        function showAlert(message, type = 'error') {
+            const container = document.getElementById('alert-container');
+            container.innerHTML = `
+                <div class="alert alert-${type}">
+                    ${message}
+                </div>
+            `;
+            
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 5000);
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            const loginBtn = document.querySelector('.login-btn');
+            const originalText = loginBtn.innerHTML;
+            
+            // Add loading state
+            loginBtn.classList.add('loading');
+            loginBtn.innerHTML = '';
+            loginBtn.disabled = true;
+            
+            try {
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value;
+                const teamName = document.getElementById('team-name').value.trim();
+                const whatsappNumber = document.getElementById('whatsapp-number').value.trim();
+                const registrationToken = document.getElementById('registration-token').value.trim();
+
+                if (!username || !password) {
+                    showAlert('Username dan password harus diisi!');
+                    return;
+                }
+
+                if (isRegisterMode && !teamName) {
+                    showAlert('Nama tim harus diisi untuk pendaftaran!');
+                    return;
+                }
+                
+                if (isRegisterMode && !registrationToken) {
+                    showAlert('Token registrasi harus diisi!');
+                    return;
+                }
+
+                if (isRegisterMode) {
+                    // Register new user
+                    await registerUser(username, password, teamName, whatsappNumber, registrationToken);
+                } else {
+                    // Login existing user
+                    await loginUser(username, password);
+                }
+            } catch (error) {
+                showAlert('Terjadi kesalahan: ' + error.message);
+            } finally {
+                // Remove loading state
+                loginBtn.classList.remove('loading');
+                loginBtn.innerHTML = originalText;
+                loginBtn.disabled = false;
+            }
+        }
+
+        async function registerUser(username, password, teamName, whatsappNumber, registrationToken) {
+            try {
+                // Check if server is available
+                const response = await fetch('/api/health');
+                
+                if (response.ok) {
+                    // Validate registration token
+                    const tokenResponse = await fetch('/api/validate-token', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            token: registrationToken
+                        })
+                    });
+                    
+                    if (!tokenResponse.ok) {
+                        const tokenError = await tokenResponse.json();
+                        throw new Error(tokenError.error || 'Token registrasi tidak valid');
+                    }
+                    
+                    // Register via API
+                    const registerResponse = await fetch('/api/users', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username: username,
+                            password: password,
+                            teamName: teamName,
+                            role: 'user',
+                            createdAt: new Date().toISOString()
+                        })
+                    });
+
+                    if (registerResponse.ok) {
+                        const newUser = await registerResponse.json();
+                        
+                        // Create team for the user
+                        await createUserTeam(teamName, newUser.id);
+                        
+                        showAlert('Pendaftaran berhasil! Silakan login dengan akun baru Anda.', 'success');
+                        selectLoginType('existing');
+                        
+                        // Clear form
+                        document.getElementById('username').value = '';
+                        document.getElementById('password').value = '';
+                        document.getElementById('team-name').value = '';
+                        document.getElementById('whatsapp-number').value = '';
+                        document.getElementById('registration-token').value = '';
+                    } else {
+                        throw new Error('Gagal mendaftarkan user');
+                    }
+                } else {
+                    throw new Error('Server tidak tersedia');
+                }
+            } catch (error) {
+                // Fallback to localStorage
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                
+                // Check if username already exists
+                if (users.find(u => u.username === username)) {
+                    throw new Error('Username sudah digunakan!');
+                }
+                
+                // Validate registration token
+                const settings = JSON.parse(localStorage.getItem('settings') || '{}');
+                const validToken = settings.registrationToken;
+                
+                if (!validToken || validToken !== registrationToken) {
+                    throw new Error('Token registrasi tidak valid');
+                }
+
+                const newUser = {
+                    id: Date.now(),
+                    username: username,
+                    password: password,
+                    teamName: teamName,
+                    role: 'user',
+                    createdAt: new Date().toISOString()
+                };
+
+                users.push(newUser);
+                localStorage.setItem('users', JSON.stringify(users));
+
+                // Create team in localStorage
+                const teams = JSON.parse(localStorage.getItem('teams') || '[]');
+                const newTeam = {
+                    id: Date.now(),
+                    name: teamName,
+                    played: 0,
+                    won: 0,
+                    drawn: 0,
+                    lost: 0,
+                    goalsFor: 0,
+                    goalsAgainst: 0,
+                    owner: newUser.id,
+                    whatsapp: whatsappNumber
+                };
+                teams.push(newTeam);
+                localStorage.setItem('teams', JSON.stringify(teams));
+
+                showAlert('Pendaftaran berhasil! Silakan login dengan akun baru Anda.', 'success');
+                selectLoginType('existing');
+                
+                // Clear form
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+                document.getElementById('team-name').value = '';
+                document.getElementById('whatsapp-number').value = '';
+                document.getElementById('registration-token').value = '';
+            }
+        }
+
+        async function createUserTeam(teamName, userId) {
+            try {
+                // Get the WhatsApp number from the input field
+                const whatsappNumber = document.getElementById('whatsapp-number').value.trim();
+                
+                const teamResponse = await fetch('/api/teams', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: teamName,
+                        played: 0,
+                        won: 0,
+                        drawn: 0,
+                        lost: 0,
+                        goalsFor: 0,
+                        goalsAgainst: 0,
+                        owner: userId,
+                        whatsapp: whatsappNumber
+                    })
+                });
+
+                if (!teamResponse.ok) {
+                    throw new Error('Gagal membuat tim');
+                }
+            } catch (error) {
+                console.error('Error creating team:', error);
+                throw error;
+            }
+        }
+
+        async function loginUser(username, password) {
+            try {
+                // Try to login via API first
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                });
+
+                if (response.ok) {
+                    const user = await response.json();
+                    const currentUser = {
+                        id: user.id,
+                        username: user.username,
+                        role: user.role || 'user',
+                        teamName: user.teamName,
+                        loginTime: new Date().toISOString()
+                    };
+
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    
+                    if (user.role === 'admin') {
+                        window.location.href = 'my-team.html';
+                    } else {
+                        window.location.href = 'my-team.html';
+                    }
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Login failed');
+                }
+            } catch (error) {
+                // Fallback to localStorage if API is not available
+                if (error.message.includes('fetch') || error.message.includes('network')) {
+                    const users = JSON.parse(localStorage.getItem('users') || '[]');
+                    const user = users.find(u => u.username === username && u.password === password);
+                    
+                    if (user) {
+                        const currentUser = {
+                            id: user.id,
+                            username: user.username,
+                            role: user.role || 'user',
+                            teamName: user.teamName,
+                            loginTime: new Date().toISOString()
+                        };
+
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                        
+                        if (user.role === 'admin') {
+                            window.location.href = 'my-team.html';
+                        } else {
+                            window.location.href = 'my-team.html';
+                        }
+                    } else {
+                        throw new Error('Username atau password salah!');
+                    }
+                } else {
+                    throw error;
+                }
+            }
+        }
+
+        // Check if user is already logged in
+        window.addEventListener('load', () => {
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                window.location.href = 'my-team.html';
+            }
+        });
+    </script>
+</body>
+</html>

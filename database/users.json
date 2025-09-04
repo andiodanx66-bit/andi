@@ -1,0 +1,19 @@
+[
+  {
+    "username": "andi",
+    "password": "odanx",
+    "teamName": "Admin Team",
+    "role": "admin",
+    "createdAt": "2025-09-01T00:00:00.000Z",
+    "id": 1,
+    "loginTime": "2025-09-03T04:49:19.126Z"
+  },
+  {
+    "username": "sutopo",
+    "password": "sutopo123",
+    "teamName": "jenang terik",
+    "role": "user",
+    "createdAt": "2025-09-03T13:07:58.793Z",
+    "id": 1756904878797
+  }
+]

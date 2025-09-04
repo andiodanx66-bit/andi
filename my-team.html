@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim Saya - Liga E-Football RND Jaya</title>
+    <style>
+        :root {
+            /* Modern Color Palette */
+            --primary-600: #4F46E5;
+            --primary-500: #6366F1;
+            --primary-400: #818CF8;
+            --primary-300: #A5B4FC;
+            --primary-200: #C7D2FE;
+            --primary-100: #E0E7FF;
+            --primary-50: #EEF2FF;
+            --primary-700: #3730A3;
+            --primary-800: #312E81;
+            --secondary-600: #7C3AED;
+            --secondary-500: #8B5CF6;
+            --secondary-700: #6D28D9;
+            --gray-900: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-500: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-300: #D1D5DB;
+            --gray-200: #E5E7EB;
+            --gray-100: #F3F4F6;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+            --success-600: #059669;
+            --success-500: #10B981;
+            --success-100: #D1FAE5;
+            --error-600: #DC2626;
+            --error-500: #EF4444;
+            --error-100: #FEE2E2;
+            --warning-600: #D97706;
+            --warning-500: #F59E0B;
+            --warning-100: #FEF3C7;
+            
+            /* Spacing & Typography */
+            --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+            --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+            --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+            --space-16: 4rem; --space-20: 5rem;
+            
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Apple Color Emoji', 'Twemoji Mozilla', Roboto, sans-serif;
+            --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+            --text-lg: 1.125rem; --text-xl: 1.25rem; --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem; --text-4xl: 2.25rem;
+            
+            /* Shadows & Radius */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            
+            --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.75rem;
+            --radius-xl: 1rem; --radius-2xl: 1.5rem; --radius-full: 9999px;
+            
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--secondary-600) 100%);
+            min-height: 100vh;
+            color: var(--gray-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: var(--space-4);
+        }
+
+        .header {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            margin-bottom: var(--space-6);
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+        }
+
+        .header h1 {
+            color: var(--primary-600);
+            font-size: var(--text-4xl);
+            font-weight: 800;
+            margin-bottom: var(--space-2);
+            letter-spacing: -0.025em;
+        }
+
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--space-6);
+            padding-top: var(--space-6);
+            border-top: 2px solid var(--gray-200);
+            flex-wrap: wrap;
+            gap: var(--space-4);
+        }
+
+        .welcome-text {
+            color: var(--gray-600);
+            font-size: var(--text-lg);
+            font-weight: 500;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: var(--space-3);
+            flex-wrap: wrap;
+        }
+
+        .nav-tabs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-6);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+        }
+
+        .nav-tab {
+            padding: var(--space-4) var(--space-6);
+            text-align: center;
+            cursor: pointer;
+            background: var(--white);
+            border: none;
+            font-size: var(--text-base);
+            font-weight: 600;
+            color: var(--primary-700);
+            transition: all var(--transition-normal);
+            position: relative;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid var(--gray-200);
+            font-family: var(--font-sans);
+        }
+
+        .nav-tab:last-child { border-right: none; }
+
+        .nav-tab::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+            transform: scaleX(0);
+            transition: transform var(--transition-normal);
+        }
+
+        .nav-tab.active::before { transform: scaleX(1); }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, var(--primary-50), var(--secondary-50));
+            color: var(--primary-700);
+        }
+
+        .nav-tab:hover {
+            background: var(--gray-50);
+            transform: translateY(-1px);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            margin-bottom: var(--space-6);
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-normal);
+            border: 1px solid var(--gray-100);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-400), var(--secondary-400));
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .card h2 {
+            color: var(--primary-600);
+            margin-bottom: var(--space-6);
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: var(--space-6);
+            background: linear-gradient(135deg, var(--primary-50), var(--secondary-50));
+            border-radius: var(--radius-xl);
+            border: 2px solid var(--primary-200);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+        }
+
+        .stat-item:hover {
+            border-color: var(--primary-400);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: var(--text-4xl);
+            font-weight: 800;
+            color: var(--primary-600);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: var(--text-sm);
+            margin-top: var(--space-2);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .team-info {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: var(--white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-10);
+            text-align: center;
+            margin-bottom: var(--space-6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-info::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            50% { transform: translate(-50%, -50%) rotate(180deg); }
+        }
+
+        .team-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-6);
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-logo {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            border: 3px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            font-weight: 800;
+            font-size: var(--text-3xl);
+            color: var(--white);
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+        }
+
+        .team-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-name {
+            font-size: var(--text-4xl);
+            font-weight: 800;
+            margin-bottom: var(--space-2);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .team-position {
+            font-size: var(--text-xl);
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: var(--white);
+            border: none;
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            min-height: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left var(--transition-normal);
+        }
+
+        .btn:hover::before { left: 100%; }
+        .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .btn:active { transform: translateY(0); }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-600);
+            border: 2px solid var(--primary-600);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-600);
+            color: var(--white);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--error-600), var(--error-500));
+        }
+
+        .form-group {
+            margin-bottom: var(--space-6);
+        }
+
+        label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: 600;
+            color: var(--gray-700);
+            font-size: var(--text-sm);
+        }
+
+        input {
+            width: 100%;
+            padding: var(--space-4);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-base);
+            transition: all var(--transition-normal);
+            font-family: inherit;
+            min-height: 48px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .alert {
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-5);
+            border: 1px solid transparent;
+        }
+
+        .alert-success {
+            background: var(--success-100);
+            border-color: var(--success-300);
+            color: var(--success-700);
+        }
+
+        .alert-error {
+            background: var(--error-100);
+            border-color: var(--error-300);
+            color: var(--error-700);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: var(--space-16);
+            color: var(--gray-500);
+            background: var(--gray-50);
+            border-radius: var(--radius-xl);
+            border: 2px dashed var(--gray-300);
+        }
+
+        .empty-state h3 {
+            color: var(--primary-600);
+            margin-bottom: var(--space-4);
+            font-size: var(--text-xl);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: var(--space-4);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        th, td {
+            padding: var(--space-4);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: var(--white);
+            font-weight: 600;
+            font-size: var(--text-sm);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        tr:hover td { background-color: var(--gray-50); }
+        tr:last-child td { border-bottom: none; }
+
+        .standings-position {
+            font-weight: bold;
+            color: var(--primary-600);
+            background: var(--primary-50);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+        }
+
+        .match-card {
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            margin-bottom: var(--space-4);
+            transition: all var(--transition-normal);
+            background: var(--white);
+        }
+
+        .match-card:hover {
+            border-color: var(--primary-400);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-4);
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+
+        .teams {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .match-time {
+            color: var(--gray-500);
+            font-size: var(--text-sm);
+            font-weight: 500;
+        }
+
+        .match-result {
+            font-size: var(--text-xl);
+            font-weight: bold;
+            text-align: center;
+            padding: var(--space-3);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-3);
+        }
+
+        .result-win {
+            background: var(--success-100);
+            color: var(--success-700);
+            border: 2px solid var(--success-300);
+        }
+
+        .result-draw {
+            background: var(--warning-100);
+            color: var(--warning-700);
+            border: 2px solid var(--warning-300);
+        }
+
+        .result-loss {
+            background: var(--error-100);
+            color: var(--error-700);
+            border: 2px solid var(--error-300);
+        }
+
+        .result-pending {
+            background: var(--gray-100);
+            color: var(--gray-600);
+            border: 2px solid var(--gray-300);
+        }
+
+        /* Mobile-First Responsive Design */
+        @media (max-width: 480px) {
+            .container { padding: var(--space-2); }
+            .header { padding: var(--space-6); }
+            .header h1 { font-size: var(--text-3xl); }
+            .nav-tabs { grid-template-columns: 1fr; }
+            .nav-tab { min-height: 52px; }
+            .card { padding: var(--space-6); }
+            .team-info { padding: var(--space-8); }
+            .team-name { font-size: var(--text-3xl); }
+            .team-header { flex-direction: column; }
+            .team-stats { grid-template-columns: repeat(2, 1fr); }
+            .user-info { flex-direction: column; align-items: stretch; }
+            .user-actions { justify-content: center; }
+            .match-header { flex-direction: column; align-items: flex-start; }
+            table { font-size: var(--text-sm); }
+            th, td { padding: var(--space-2) var(--space-3); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs { grid-template-columns: repeat(2, 1fr); }
+            .team-stats { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 769px) {
+            .nav-tabs { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* Focus indicators for accessibility */
+        .nav-tab:focus-visible,
+        .btn:focus-visible,
+        input:focus-visible {
+            outline: 2px solid var(--primary-500);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚽ Tim Saya</h1>
+            <div class="user-info">
+                <div class="welcome-text">
+                    Selamat datang, <span id="user-name">-</span>!
+                </div>
+                <div class="user-actions">
+                    <a href="public.html" id="league-link" class="btn btn-secondary">📊 Lihat Liga</a>
+                    <button onclick="logout()" class="btn btn-danger">🚪 Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="alert-container"></div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="switchTab('overview')">🏠 Overview</button>
+            <button class="nav-tab" onclick="switchTab('matches')">⚽ Pertandingan</button>
+            <!-- Klasemen dihapus dari dashboard Tim Saya; lihat klasemen di Lihat Liga -->
+            <button class="nav-tab" onclick="switchTab('settings')">⚙️ Pengaturan</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="team-info">
+                <div class="team-header">
+                    <div class="team-logo" id="team-logo">--</div>
+                    <div>
+                        <div class="team-name" id="team-name">Loading...</div>
+                        <div class="team-position" id="team-position">Posisi: -</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📊 Statistik Tim</h2>
+                <div class="team-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="stat-played">0</span>
+                        <div class="stat-label">Main</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="stat-won">0</span>
+                        <div class="stat-label">Menang</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="stat-drawn">0</span>
+                        <div class="stat-label">Seri</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="stat-lost">0</span>
+                        <div class="stat-label">Kalah</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="stat-goals-for">0</span>
+                        <div class="stat-label">Gol Dibuat</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="stat-goals-against">0</span>
+                        <div class="stat-label">Gol Kebobolan</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="stat-goal-diff">0</span>
+                        <div class="stat-label">Selisih Gol</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="stat-points">0</span>
+                        <div class="stat-label">Poin</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📅 Pertandingan Terakhir</h2>
+                <div id="recent-matches">
+                    <div class="empty-state">
+                        <h3>Belum ada pertandingan</h3>
+                        <p>Tim Anda belum memainkan pertandingan apapun</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Matches Tab -->
+        <div id="matches" class="tab-content">
+            <div class="card">
+                <h2>⚽ Semua Pertandingan Tim</h2>
+                <div id="all-matches">
+                    <div class="empty-state">
+                        <h3>Belum ada jadwal pertandingan</h3>
+                        <p>Admin belum membuat jadwal liga</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Standings removed from Tim Saya; use 'Lihat Liga' to view klasemen -->
+
+        <!-- Settings Tab -->
+        <div id="settings" class="tab-content">
+            <div class="card">
+                <h2>⚙️ Pengaturan</h2>
+
+                <div style="display:grid; gap:20px;">
+                    <form onsubmit="updateTeamName(event)">
+                        <div class="form-group">
+                            <label for="new-team-name">Nama Tim:</label>
+                            <input type="text" id="new-team-name" required>
+                        </div>
+                        <button type="submit" class="btn">💾 Simpan Nama Tim</button>
+                    </form>
+
+                    <!-- WhatsApp Number Setting -->
+                    <form onsubmit="saveTeamWhatsApp(event)">
+                        <div class="form-group">
+                            <label for="team-whatsapp">Nomor WhatsApp (contoh: 628123456789)</label>
+                            <input type="text" id="team-whatsapp" placeholder="Masukkan nomor WhatsApp tanpa + atau 0" />
+                        </div>
+                        <button type="submit" class="btn"><img src="whatsapp.png" alt="WhatsApp" style="width:24px; height:24px; vertical-align:middle; margin-right:5px;"> Simpan Nomor WhatsApp</button>
+                    </form>
+
+                    <form onsubmit="updateAccount(event)">
+                        <div class="form-group">
+                            <label for="new-username">Username:</label>
+                            <input type="text" id="new-username" placeholder="Ganti username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">Password baru:</label>
+                            <input type="password" id="new-password" placeholder="Ganti password" required>
+                        </div>
+                        <button type="submit" class="btn">🔒 Simpan Akun</button>
+                    </form>
+
+                    <form onsubmit="saveTeamLogo(event)">
+                        <div class="form-group">
+                            <label for="team-logo-input">Logo Tim:</label>
+                            <input type="file" id="team-logo-input" accept="image/*">
+                        </div>
+                        <div id="team-logo-preview" style="display:flex; align-items:center; gap:12px; margin-bottom:10px;"></div>
+                        <button type="submit" class="btn">🖼️ Simpan Logo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = null;
+        let userTeam = null;
+        let selectedLogoDataUrl = null;
+        
+        // Teams array for chat icons (separate from script.js)
+        let myTeamsData = [];
+
+        // Initialize the page
+        window.addEventListener('load', async () => {
+            // Check authentication
+            const userStr = localStorage.getItem('currentUser');
+            if (!userStr) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            currentUser = JSON.parse(userStr);
+            
+            // Update user info
+            document.getElementById('user-name').textContent = currentUser.username;
+            const newUsernameInput = document.getElementById('new-username');
+            if (newUsernameInput) newUsernameInput.value = currentUser.username;
+
+            // Route the "Lihat Liga" link correctly based on role
+            try {
+                const leagueLink = document.getElementById('league-link');
+                if (leagueLink) {
+                    leagueLink.setAttribute('href', (currentUser.role === 'admin' || currentUser.username === 'admin') ? 'index.html' : 'public.html');
+                }
+            } catch (e) { /* noop */ }
+            
+            // Load user's team data
+            await loadUserTeam();
+            await loadStandings();
+            await loadMatches();
+
+            // Init logo preview change handler
+            const logoInput = document.getElementById('team-logo-input');
+            if (logoInput) {
+                logoInput.addEventListener('change', handleLogoFileChange);
+            }
+        });
+
+        async function loadUserTeam() {
+            try {
+                // Try to get teams from API first
+                try {
+                    const response = await fetch('/api/teams');
+                    if (response.ok) {
+                        myTeamsData = await response.json(); // Store in local variable
+                    }
+                } catch (error) {
+                    console.log('API not available, using localStorage');
+                }
+                
+                // Fallback to localStorage
+                if (myTeamsData.length === 0) {
+                    myTeamsData = JSON.parse(localStorage.getItem('teams') || '[]');
+                }
+
+                // Find user's team
+                userTeam = myTeamsData.find(team => {
+                    // Method 1: Match by owner ID (for database users)
+                    if (currentUser.id && team.owner === currentUser.id) {
+                        return true;
+                    }
+                    
+                    // Method 2: Match by team name (for all users)
+                    if (currentUser.teamName && team.name === currentUser.teamName) {
+                        return true;
+                    }
+                    
+                    // Method 3: For predefined admin/user accounts, match by expected team names
+                    if (currentUser.username === 'admin' && team.name === 'Admin Team') {
+                        return true;
+                    }
+                    
+                    if (currentUser.username === 'user' && team.name === 'Demo Team') {
+                        return true;
+                    }
+                    
+                    return false;
+                });
+
+                if (userTeam) {
+                    updateTeamDisplay();
+                    document.getElementById('new-team-name').value = userTeam.name;
+                    // Populate WhatsApp input if present
+                    try {
+                        const waInput = document.getElementById('team-whatsapp');
+                        if (waInput) waInput.value = userTeam.whatsapp || '';
+                    } catch (_) {}
+                    // Preview existing logo if any
+                    try { renderLogoPreview(userTeam.logo); } catch(_) {}
+                    console.log('User team found:', userTeam.name, 'for user:', currentUser.username);
+                } else {
+                    console.log('Team lookup failed for user:', currentUser.username, 'with teamName:', currentUser.teamName, 'and id:', currentUser.id);
+                    console.log('Available teams:', myTeamsData.map(t => ({name: t.name, owner: t.owner})));
+                    showAlert('Tim Anda tidak ditemukan. Silakan hubungi admin.', 'error');
+                }
+            } catch (error) {
+                console.error('Error loading team:', error);
+                showAlert('Gagal memuat data tim', 'error');
+            }
+        }
+
+        function updateTeamDisplay() {
+            if (!userTeam) return;
+
+            // Update team info
+            document.getElementById('team-name').textContent = userTeam.name;
+            
+            // Update logo
+            const logoEl = document.getElementById('team-logo');
+            if (logoEl) {
+                if (userTeam.logo) {
+                    logoEl.innerHTML = '<img src="' + userTeam.logo + '" alt="Team Logo" />';
+                } else {
+                    const initials = (userTeam.name || '--')
+                        .split(' ')
+                        .map(w => w[0])
+                        .join('')
+                        .slice(0, 2)
+                        .toUpperCase();
+                    logoEl.textContent = initials || '--';
+                }
+            }
+            
+            // Update statistics
+            document.getElementById('stat-played').textContent = userTeam.played || 0;
+            document.getElementById('stat-won').textContent = userTeam.won || 0;
+            document.getElementById('stat-drawn').textContent = userTeam.drawn || 0;
+            document.getElementById('stat-lost').textContent = userTeam.lost || 0;
+            document.getElementById('stat-goals-for').textContent = userTeam.goalsFor || 0;
+            document.getElementById('stat-goals-against').textContent = userTeam.goalsAgainst || 0;
+            
+            const goalDiff = (userTeam.goalsFor || 0) - (userTeam.goalsAgainst || 0);
+            document.getElementById('stat-goal-diff').textContent = goalDiff > 0 ? '+' + goalDiff : goalDiff;
+            
+            const points = (userTeam.won || 0) * 3 + (userTeam.drawn || 0);
+            document.getElementById('stat-points').textContent = points;
+                // Show WhatsApp link next to team name when available
+                // REMOVED: WhatsApp chat icons removed as per user request
+                try {
+                    const teamNameEl = document.getElementById('team-name');
+                    if (teamNameEl) {
+                        const existing = document.getElementById('team-wa-link');
+                        if (existing) existing.remove();
+                        // No longer adding WhatsApp chat icons
+                    }
+                } catch (_) {}
+
+            updateTeamPosition();
+        }
+
+        async function loadStandings() {
+            try {
+                // Try API first
+                try {
+                    const response = await fetch('/api/teams');
+                    if (response.ok) {
+                        myTeamsData = await response.json(); // Store in local variable
+                    }
+                } catch (error) {
+                    myTeamsData = JSON.parse(localStorage.getItem('teams') || '[]');
+                }
+
+                if (myTeamsData.length === 0) {
+                    return;
+                }
+
+                // Sort teams by points, then goal difference
+                const sortedTeams = myTeamsData.sort((a, b) => {
+                    const pointsA = (a.won * 3) + (a.drawn * 1);
+                    const pointsB = (b.won * 3) + (b.drawn * 1);
+                    if (pointsB !== pointsA) return pointsB - pointsA;
+                    return (b.goalsFor - b.goalsAgainst) - (a.goalsFor - a.goalsAgainst);
+                });
+
+                // Update standings table
+                const tbody = document.getElementById('standings-tbody');
+                tbody.innerHTML = '';
+                
+                sortedTeams.forEach((team, index) => {
+                    const points = (team.won * 3) + (team.drawn * 1);
+                    const goalDiff = team.goalsFor - team.goalsAgainst;
+                    const isUserTeam = team.id === userTeam?.id;
+                    const initials = (team.name || '--')
+                        .split(' ')
+                        .map(w => w[0])
+                        .join('')
+                        .slice(0, 2)
+                        .toUpperCase();
+                    const teamCell = team.logo
+                        ? `<div style="display:inline-flex;align-items:center;gap:8px;"><img src="${team.logo}" alt="${team.name}" style="width:24px;height:24px;border-radius:50%;object-fit:cover;border:1px solid #e0e6ed;" />${team.name} ${isUserTeam ? '👑' : ''}</div>`
+                        : `<div style="display:inline-flex;align-items:center;gap:8px;"><div style="width:24px;height:24px;border-radius:50%;background:#e8edff;color:#667eea;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:1px solid #e0e6ed;">${initials}</div>${team.name} ${isUserTeam ? '👑' : ''}</div>`;
+                    
+                    const row = `
+                        <tr style="${isUserTeam ? 'background-color: #fff3cd; font-weight: bold;' : ''}">
+                            <td class="standings-position">${index + 1}</td>
+                            <td>${teamCell}</td>
+                            <td>${team.played}</td>
+                            <td>${team.won}</td>
+                            <td>${team.drawn}</td>
+                            <td>${team.lost}</td>
+                            <td>${team.goalsFor}</td>
+                            <td>${team.goalsAgainst}</td>
+                            <td>${goalDiff > 0 ? '+' + goalDiff : goalDiff}</td>
+                            <td><strong>${points}</strong></td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += row;
+
+                    // Update user team position
+                    if (isUserTeam) {
+                        document.getElementById('team-position').textContent = `Posisi: ${index + 1} dari ${sortedTeams.length}`;
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading standings:', error);
+            }
+        }
+
+        function updateTeamPosition() {
+            // This will be called from loadStandings
+        }
+
+        async function loadMatches() {
+            try {
+                let matches = [];
+                
+                // Ensure teams are loaded for chat icons
+                if (myTeamsData.length === 0) {
+                    try {
+                        const response = await fetch('/api/teams');
+                        if (response.ok) {
+                            myTeamsData = await response.json();
+                        }
+                    } catch (error) {
+                        myTeamsData = JSON.parse(localStorage.getItem('teams') || '[]');
+                    }
+                }
+                
+                // Try API first
+                try {
+                    const response = await fetch('/api/matches');
+                    if (response.ok) {
+                        matches = await response.json();
+                    }
+                } catch (error) {
+                    matches = JSON.parse(localStorage.getItem('matches') || '[]');
+                }
+
+                if (!userTeam) return;
+
+                // Filter matches for this team
+                const teamMatches = matches.filter(match => 
+                    match.homeTeam === userTeam.name || match.awayTeam === userTeam.name
+                );
+
+                // Update all matches tab
+                const allMatchesContainer = document.getElementById('all-matches');
+                if (teamMatches.length === 0) {
+                    allMatchesContainer.innerHTML = `
+                        <div class="empty-state">
+                            <h3>Belum ada jadwal pertandingan</h3>
+                            <p>Admin belum membuat jadwal liga</p>
+                        </div>
+                    `;
+                } else {
+                    allMatchesContainer.innerHTML = '';
+                    teamMatches.forEach(match => {
+                        const matchCard = createMatchCard(match);
+                        allMatchesContainer.appendChild(matchCard);
+                    });
+                }
+
+                // Update recent matches (last 5 completed matches)
+                const completedMatches = teamMatches
+                    .filter(match => match.status === 'completed')
+                    .slice(-5);
+                
+                const recentMatchesContainer = document.getElementById('recent-matches');
+                if (completedMatches.length === 0) {
+                    recentMatchesContainer.innerHTML = `
+                        <div class="empty-state">
+                            <h3>Belum ada pertandingan selesai</h3>
+                            <p>Tim Anda belum menyelesaikan pertandingan apapun</p>
+                        </div>
+                    `;
+                } else {
+                    recentMatchesContainer.innerHTML = '';
+                    completedMatches.forEach(match => {
+                        const matchCard = createMatchCard(match);
+                        recentMatchesContainer.appendChild(matchCard);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading matches:', error);
+            }
+        }
+
+        function createMatchCard(match) {
+            const matchDiv = document.createElement('div');
+            matchDiv.className = 'match-card';
+            
+            const isHome = match.homeTeam === userTeam.name;
+            const isCompleted = match.status === 'completed';
+            
+            let resultClass = 'result-pending';
+            let resultText = 'Belum main';
+            
+            if (isCompleted) {
+                const homeScore = match.homeScore || 0;
+                const awayScore = match.awayScore || 0;
+                
+                if ((isHome && homeScore > awayScore) || (!isHome && awayScore > homeScore)) {
+                    resultClass = 'result-win';
+                    resultText = 'MENANG';
+                } else if (homeScore === awayScore) {
+                    resultClass = 'result-draw';
+                    resultText = 'SERI';
+                } else {
+                    resultClass = 'result-loss';
+                    resultText = 'KALAH';
+                }
+            }
+
+            const formattedDate = new Date(match.date).toLocaleDateString('id-ID');
+            
+            matchDiv.innerHTML = `
+                <div class="match-header">
+                    <div class="teams">
+                        ${escapeHtml(match.homeTeam)} ${renderTeamWAIcon(match.homeTeam)}
+                        <span style="margin: 0 8px; color:#999; font-weight:600;">vs</span>
+                        ${escapeHtml(match.awayTeam)} ${renderTeamWAIcon(match.awayTeam)}
+                    </div>
+                    <div class="match-time">${formattedDate} - ${match.time}</div>
+                </div>
+                ${isCompleted ? `
+                    <div class="match-result ${resultClass}">
+                        ${match.homeScore} - ${match.awayScore} (${resultText})
+                    </div>
+                ` : `
+                    <div class="match-result ${resultClass}">
+                        ${resultText}
+                    </div>
+                `}
+            `;
+
+            return matchDiv;
+        }
+
+        // Render WhatsApp links for both teams (shows only when team has whatsapp stored)
+        function renderMatchWhatsAppLinks(match) {
+            try {
+                // find teams from global myTeamsData array
+                const home = myTeamsData.find(t => t.name === match.homeTeam) || {};
+                const away = myTeamsData.find(t => t.name === match.awayTeam) || {};
+
+                const links = [];
+                if (home.whatsapp) {
+                    links.push(`<a href="https://wa.me/${encodeURIComponent(home.whatsapp)}" target="_blank" style="text-decoration:none; color:#167a39;">🏠 ${home.name}</a>`);
+                }
+                if (away.whatsapp) {
+                    links.push(`<a href="https://wa.me/${encodeURIComponent(away.whatsapp)}" target="_blank" style="text-decoration:none; color:#167a39;">✈️ ${away.name}</a>`);
+                }
+
+                if (links.length === 0) return '<span style="color:#666;">Nomor WhatsApp belum diset untuk tim</span>';
+                return links.join(' &nbsp; | &nbsp; ');
+            } catch (e) {
+                return '';
+            }
+        }
+
+        // Escape HTML to avoid injection when inserting team names
+        function escapeHtml(text) {
+            if (!text) return '';
+            return String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        // Render a small WhatsApp icon next to the given team name if that team has a whatsapp number
+        // But not for the current user's own team (to prevent self-chatting)
+        function renderTeamWAIcon(teamName) {
+            try {
+                // Check if this is guest mode first (though my-team.html requires authentication)
+                const urlParams = new URLSearchParams(window.location.search);
+                const isGuest = urlParams.get('guest') === 'true';
+                
+                if (isGuest) {
+                    console.log('Guest mode detected, hiding chat icon for:', teamName);
+                    return ''; // No chat icons for guests
+                }
+                
+                // Debug logging
+                console.log('renderTeamWAIcon called for:', teamName);
+                console.log('currentUser:', currentUser);
+                console.log('currentUser.teamName:', currentUser?.teamName);
+                
+                // Don't show chat icon for current user's own team
+                if (currentUser) {
+                    // Multiple ways to check if this is the user's team
+                    const userTeamName = currentUser.teamName;
+                    const userName = currentUser.username;
+                    
+                    // Case-insensitive comparison to handle potential case mismatches
+                    let isOwnTeam = false;
+                    
+                    // Method 1: Direct team name comparison
+                    if (userTeamName && teamName.toLowerCase() === userTeamName.toLowerCase()) {
+                        isOwnTeam = true;
+                    }
+                    
+                    // Method 2: Check if team name matches username (some systems do this)
+                    if (!isOwnTeam && userName && teamName.toLowerCase() === userName.toLowerCase()) {
+                        isOwnTeam = true;
+                    }
+                    
+                    // Method 3: Check if user owns this team (by looking in teams array)
+                    if (!isOwnTeam && currentUser.id) {
+                        const userOwnedTeam = myTeamsData.find(t => t.owner === currentUser.id);
+                        if (userOwnedTeam && teamName.toLowerCase() === userOwnedTeam.name.toLowerCase()) {
+                            isOwnTeam = true;
+                        }
+                    }
+                    
+                    console.log('Team comparison result - isOwnTeam:', isOwnTeam);
+                    console.log('Methods checked: teamName vs userTeamName, teamName vs userName, teamName vs ownedTeam');
+                    
+                    if (isOwnTeam) {
+                        console.log('Hiding chat icon for own team:', teamName);
+                        return ''; // No chat icon for own team
+                    }
+                }
+                
+                const team = myTeamsData.find(t => t.name === teamName) || {};
+                if (team.whatsapp) {
+                    console.log('Showing chat icon for team:', teamName, 'with WhatsApp:', team.whatsapp);
+                    return `<a href="https://kirimwa.id/${encodeURIComponent(team.whatsapp)}" target="_blank" style="text-decoration:none; margin-left:6px; font-size:18px;" title="Chat ${teamName} via WhatsApp"><img src="whatsapp.png" alt="WhatsApp" style="width:24px; height:24px; vertical-align:middle;"></a>`;
+                }
+                console.log('No WhatsApp number for team:', teamName);
+                return '';
+            } catch (e) {
+                console.error('Error in renderTeamWAIcon:', e);
+                return '';
+            }
+        }
+
+        // Save WhatsApp number for current user's team
+        async function saveTeamWhatsApp(event) {
+            event.preventDefault();
+            if (!userTeam) {
+                showAlert('Tim tidak ditemukan', 'error');
+                return;
+            }
+
+            const waInput = document.getElementById('team-whatsapp');
+            const phone = waInput ? waInput.value.trim() : '';
+
+            // Basic cleaning: keep digits only
+            const cleaned = (phone || '').replace(/[^0-9]/g, '');
+            userTeam.whatsapp = cleaned;
+
+            try {
+                // Try to save via API
+                try {
+                    const resp = await fetch(`/api/teams/${userTeam.id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ ...userTeam })
+                    });
+                    if (resp.ok) {
+                        const updated = await resp.json();
+                        userTeam = updated;
+                        showAlert('Nomor WhatsApp berhasil disimpan', 'success');
+                        updateTeamDisplay();
+                        await loadMatches();
+                        return;
+                    }
+                } catch (e) {
+                    console.log('API not available for saving whatsapp, falling back to localStorage');
+                }
+
+                // Fallback: save in localStorage teams array
+                const stored = JSON.parse(localStorage.getItem('teams') || '[]');
+                const idx = stored.findIndex(t => t.id === userTeam.id || t.name === userTeam.name);
+                if (idx !== -1) {
+                    stored[idx] = userTeam;
+                    localStorage.setItem('teams', JSON.stringify(stored));
+                    // Update local data array
+                    myTeamsData = stored;
+                }
+
+                showAlert('Nomor WhatsApp disimpan (offline)', 'success');
+                updateTeamDisplay();
+                await loadMatches();
+            } catch (error) {
+                console.error('Error saving whatsapp:', error);
+                showAlert('Gagal menyimpan nomor WhatsApp', 'error');
+            }
+        }
+
+        async function updateTeamName(event) {
+            event.preventDefault();
+            
+            const newName = document.getElementById('new-team-name').value.trim();
+            if (!newName) {
+                showAlert('Nama tim tidak boleh kosong', 'error');
+                return;
+            }
+
+            if (!userTeam) {
+                showAlert('Tim tidak ditemukan', 'error');
+                return;
+            }
+
+            try {
+                // Try API first
+                try {
+                    const response = await fetch(`/api/teams/${userTeam.id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            ...userTeam,
+                            name: newName
+                        })
+                    });
+
+                    if (response.ok) {
+                        userTeam.name = newName;
+                        currentUser.teamName = newName;
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                        
+                        updateTeamDisplay();
+                        await loadStandings();
+                        await loadMatches();
+                        
+                        showAlert('Nama tim berhasil diperbarui!', 'success');
+                        return;
+                    }
+                } catch (error) {
+                    console.log('API not available, using localStorage');
+                }
+
+                // Fallback to localStorage
+                const teams = JSON.parse(localStorage.getItem('teams') || '[]');
+                const teamIndex = teams.findIndex(team => team.id === userTeam.id);
+                
+                if (teamIndex !== -1) {
+                    teams[teamIndex].name = newName;
+                    localStorage.setItem('teams', JSON.stringify(teams));
+                    // Update local data array
+                    myTeamsData = teams;
+                    
+                    userTeam.name = newName;
+                    currentUser.teamName = newName;
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    
+                    updateTeamDisplay();
+                    await loadStandings();
+                    await loadMatches();
+                    
+                    showAlert('Nama tim berhasil diperbarui!', 'success');
+                } else {
+                    showAlert('Gagal memperbarui nama tim', 'error');
+                }
+            } catch (error) {
+                console.error('Error updating team name:', error);
+                showAlert('Terjadi kesalahan saat memperbarui nama tim', 'error');
+            }
+        }
+
+        async function updateAccount(event) {
+            event.preventDefault();
+            try {
+                const newUsername = document.getElementById('new-username').value.trim();
+                const newPassword = document.getElementById('new-password').value;
+                if (!newUsername || !newPassword) {
+                    showAlert('Username dan password wajib diisi', 'error');
+                    return;
+                }
+
+                // Check duplicate username (client-side)
+                try {
+                    const resp = await fetch('/api/users');
+                    if (resp.ok) {
+                        const allUsers = await resp.json();
+                        const taken = allUsers.some(u => u.username === newUsername && u.id !== currentUser.id);
+                        if (taken) {
+                            showAlert('Username sudah digunakan', 'error');
+                            return;
+                        }
+                    }
+                } catch (_) { }
+
+                // Update via API
+                try {
+                    const response = await fetch(`/api/users/${currentUser.id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            ...currentUser,
+                            username: newUsername,
+                            password: newPassword
+                        })
+                    });
+                    if (response.ok) {
+                        const safeUser = await response.json();
+                        currentUser.username = safeUser.username;
+                        document.getElementById('user-name').textContent = safeUser.username;
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                        showAlert('Akun berhasil diperbarui!', 'success');
+                        return;
+                    }
+                } catch (_) { }
+
+                // Fallback localStorage
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                const idx = users.findIndex(u => u.id === currentUser.id);
+                if (idx !== -1) {
+                    users[idx] = { ...users[idx], username: newUsername, password: newPassword };
+                    localStorage.setItem('users', JSON.stringify(users));
+                    currentUser.username = newUsername;
+                    document.getElementById('user-name').textContent = newUsername;
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    showAlert('Akun berhasil diperbarui (lokal)!', 'success');
+                } else {
+                    showAlert('Gagal memperbarui akun', 'error');
+                }
+            } catch (e) {
+                console.error('Error updating account:', e);
+                showAlert('Terjadi kesalahan saat memperbarui akun', 'error');
+            }
+        }
+
+        function handleLogoFileChange(e) {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+            if (!file.type.startsWith('image/')) {
+                showAlert('File harus berupa gambar', 'error');
+                e.target.value = '';
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = () => {
+                selectedLogoDataUrl = reader.result;
+                renderLogoPreview(selectedLogoDataUrl);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function renderLogoPreview(dataUrl) {
+            const preview = document.getElementById('team-logo-preview');
+            if (!preview) return;
+            if (!dataUrl) {
+                preview.innerHTML = '<span style="opacity:.8;">Belum ada logo</span>';
+                return;
+            }
+            preview.innerHTML = '<img src="' + dataUrl + '" alt="Preview" style="width:72px; height:72px; border-radius:50%; object-fit:cover; border:2px solid #e0e6ed;" />';
+        }
+
+        async function saveTeamLogo(event) {
+            event.preventDefault();
+            try {
+                if (!userTeam) {
+                    showAlert('Tim tidak ditemukan', 'error');
+                    return;
+                }
+                if (!selectedLogoDataUrl) {
+                    showAlert('Pilih gambar logo terlebih dahulu', 'error');
+                    return;
+                }
+
+                // Update via API
+                try {
+                    const response = await fetch(`/api/teams/${userTeam.id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ ...userTeam, logo: selectedLogoDataUrl })
+                    });
+                    if (response.ok) {
+                        userTeam.logo = selectedLogoDataUrl;
+                        updateTeamDisplay();
+                        showAlert('Logo tim berhasil diperbarui!', 'success');
+                        return;
+                    }
+                } catch (_) { }
+
+                // Fallback localStorage
+                const teams = JSON.parse(localStorage.getItem('teams') || '[]');
+                const teamIndex = teams.findIndex(team => team.id === userTeam.id);
+                if (teamIndex !== -1) {
+                    teams[teamIndex].logo = selectedLogoDataUrl;
+                    localStorage.setItem('teams', JSON.stringify(teams));
+                    userTeam.logo = selectedLogoDataUrl;
+                    updateTeamDisplay();
+                    showAlert('Logo tim berhasil diperbarui (lokal)!', 'success');
+                } else {
+                    showAlert('Gagal menyimpan logo tim', 'error');
+                }
+            } catch (e) {
+                console.error('Error saving logo:', e);
+                showAlert('Terjadi kesalahan saat menyimpan logo', 'error');
+            }
+        }
+
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all nav tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to selected nav tab
+            event.target.classList.add('active');
+        }
+
+        function showAlert(message, type = 'error') {
+            const container = document.getElementById('alert-container');
+            container.innerHTML = `
+                <div class="alert alert-${type}">
+                    ${message}
+                </div>
+            `;
+            
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 5000);
+        }
+
+        function logout() {
+            if (confirm('Yakin ingin logout?')) {
+                localStorage.removeItem('currentUser');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>
